@@ -10,7 +10,7 @@ const initialState = {
 
 const userSlice = createSlice({
     name: "user",
-    inititalState,
+    initialState,
     reducers: {
         setUserLoginDetails: (state, action) => { // when user logs in, it remembers that stuff
             state.name = action.payload.name;
@@ -32,3 +32,4 @@ export const selectUserName = (state) => state.user.name;
 export const selectUserEmail = (state) => state.user.email;
 export const selectUserPhoto = (state) => state.user.photo;
 
+export default userSlice.reducer;

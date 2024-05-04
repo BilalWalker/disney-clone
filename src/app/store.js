@@ -6,7 +6,5 @@ export default configureStore({
     reducer: {
         user: userReducer,
     },
-    middleware: getDefaultMiddleware({
-        serializableCheck: false,
-    }),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
