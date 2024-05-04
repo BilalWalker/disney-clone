@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch, userDispatch, useSelector } from "react-redux";
 import { auth, provider } from "../firebase";
@@ -10,6 +11,14 @@ const Header = (props) => {
     const userName = useSelector(selectUserName);
     const userPhoto = useSelector(selectUserPhoto);
 
+    useEffect(() => {
+        auth.onAuthStateChanged(async (user) => {
+            if(user ) { // if user is logged in then bring him to the home page
+                setUser(user);
+                history.push("/home");
+            }
+        })
+    }, [userName]); // if userName is updated, this useEffect function is run
 
     const handleAuth = () => {
         auth.signInWithPopup(provider).then((result) => {
@@ -27,7 +36,9 @@ const Header = (props) => {
                 photo: user.photoURL,
             })
         );
-    }
+    };
+
+
 
     return (
         <Nav>
