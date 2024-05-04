@@ -31,8 +31,8 @@ const Header = (props) => {
                     <img src="/images/series-icon.svg" alt="Home"></img>
                     <span>SERIES</span>
                 </a>
-            
             </NavMenu>
+            <Login>Login</Login>
         </Nav>
     )
 };
@@ -126,9 +126,25 @@ const NavMenu = styled.div`
         }
     }
 
-    // @media(max-width: 768px) {
-    //     display: none;
-    // }
+    @media(max-width: 768px) {
+        display: none;
+    }
+`;
+
+const Login = styled.a`
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 8px 16px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border: 1px solid #f9f9f9;
+    border-radius: 4px;
+    transition: all .2s ease 0s;
+
+    &:hover {
+        background-color: #f9f9f9;
+        color: #000;
+        border-color: transparent;
+    }
 `;
 
 export default Header;
