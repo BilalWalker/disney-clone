@@ -46,8 +46,6 @@ const Header = (props) => {
         );
     };
 
-
-
     return (
         <Nav>
             <Logo>
@@ -59,41 +57,38 @@ const Header = (props) => {
                 <Login onClick={handleAuth}>Login</Login> 
                 ) : (
                 <>
-                
-            
-
-                <NavMenu>
-                    <a href='/home'>
-                        <img src="/images/home-icon.svg" alt="Home"></img>
-                        <span>HOME</span>
-                    </a>
-                    <a>
-                        <img src="/images/search-icon.svg" alt="Home"></img>
-                        <span>SEARCH</span>
-                    </a>
-                    <a>
-                        <img src="/images/watchlist-icon.svg" alt="Home"></img>
-                        <span>WATCHLIST</span>
-                    </a>
-                    <a>
-                        <img src="/images/original-icon.svg" alt="Home"></img>
-                        <span>ORIGINALS</span>
-                    </a>
-                    <a>
-                        <img src="/images/movie-icon.svg" alt="Home"></img>
-                        <span>MOVIES</span>
-                    </a>
-                    <a>
-                        <img src="/images/series-icon.svg" alt="Home"></img>
-                        <span>SERIES</span>
-                    </a>
-                </NavMenu>
-                <SignOut>
-                    <UserImg src={userPhoto} alt={userName}/>
-                    <DropDown>
-                        <span onClick={handleAuth}>Sign out</span>
-                    </DropDown>
-                </SignOut>
+                    <NavMenu>
+                        <a href='/home'>
+                            <img src="/images/home-icon.svg" alt="Home"></img>
+                            <span>HOME</span>
+                        </a>
+                        <a>
+                            <img src="/images/search-icon.svg" alt="Home"></img>
+                            <span>SEARCH</span>
+                        </a>
+                        <a>
+                            <img src="/images/watchlist-icon.svg" alt="Home"></img>
+                            <span>WATCHLIST</span>
+                        </a>
+                        <a>
+                            <img src="/images/original-icon.svg" alt="Home"></img>
+                            <span>ORIGINALS</span>
+                        </a>
+                        <a>
+                            <img src="/images/movie-icon.svg" alt="Home"></img>
+                            <span>MOVIES</span>
+                        </a>
+                        <a>
+                            <img src="/images/series-icon.svg" alt="Home"></img>
+                            <span>SERIES</span>
+                        </a>
+                    </NavMenu>
+                    <SignOut>
+                        <UserImg src={userPhoto} alt={userName}/>
+                        <DropDown>
+                            <span onClick={handleAuth}>Sign out</span>
+                        </DropDown>
+                    </SignOut>
                 </>
             )}
         </Nav>
