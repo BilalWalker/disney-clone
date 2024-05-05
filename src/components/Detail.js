@@ -1,22 +1,22 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useParams } from "react-router-dom";
 import db from "../firebase";
 
 const Detail = (props) => {
     const { id } = useParams();
-    const { detailData, setDetailData } = useState({});
+    const [ detailData, setDetailData ] = useState({});
 
     useEffect(() => {
-        db.collection('movies').doc(id).get().then((doc) => {
+        db.collection("movies").doc(id).get().then((doc) => {
                 if(doc.exists) {
                     setDetailData(doc.data());
                 } else {
-                    console.log('no such document in firebase')
+                    console.log('no such document in firebase');
                 }
             }).catch((error) => {
                 console.log("Error getting document", error);
-            })
+            });
     }, [id]); // we make sure this detail gets updated when this id changes, and this id is whatever movie the user clicks, the id of the movie is this id.
 
 
@@ -24,16 +24,10 @@ const Detail = (props) => {
     return (
         <Container>
             <Background>
-                <img 
-                alt=""
-                src=""
-                />
+                <img alt={detailData.title} src={detailData.backgroundImg} />
             </Background>
             <ImageTitle>
-                <img 
-                alt=""
-                src=""
-                />
+                <img alt={detailData.title} src={detailData.titleImg} />
             </ImageTitle>
             <ContentMeta>
                 <Controls>
@@ -55,12 +49,8 @@ const Detail = (props) => {
                         </div>
                     </GroupWatch>
                 </Controls>
-                <SubTitle>
-                    SUBTITLE
-                </SubTitle>
-                <Description>
-                    Description
-                </Description>
+                <SubTitle>{detailData.subTitle}</SubTitle>
+                <Description>{detailData.description}</Description>
             </ContentMeta>
         </Container>
     )
@@ -87,7 +77,7 @@ const Background = styled.div`
         width: 100vw;
         height: 100vh;
 
-        media (max-width: 768px) {
+        @media (max-width: 768px) {
             width: initial;
         }
     }
