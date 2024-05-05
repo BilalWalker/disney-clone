@@ -1,6 +1,26 @@
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import db from "../firebase";
 
 const Detail = (props) => {
+    const { id } = useParams();
+    const { detailData, setDetailData } = useState({});
+
+    useEffect(() => {
+        db.collection('movies').doc(id).get().then((doc) => {
+                if(doc.exists) {
+                    setDetailData(doc.data());
+                } else {
+                    console.log('no such document in firebase')
+                }
+            }).catch((error) => {
+                console.log("Error getting document", error);
+            })
+    }, [id]); // we make sure this detail gets updated when this id changes, and this id is whatever movie the user clicks, the id of the movie is this id.
+
+
+
     return (
         <Container>
             <Background>
